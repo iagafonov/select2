@@ -4814,7 +4814,6 @@ S2.define('select2/defaults',[
       function match(a) {
         return DIACRITICS[a] || a;
       }
-
       return text.replace(/[^\u0000-\u007E]/g, match);
     }
 
@@ -4851,8 +4850,8 @@ S2.define('select2/defaults',[
         return matcher(params, match);
       }
 
-      var original = stripDiacritics(data.text).toUpperCase();
-      var term = stripDiacritics(params.term).toUpperCase();
+      var original = data.text.toUpperCase() // stripDiacritics(data.text).toUpperCase();
+      var term = params.term.toUpperCase() // stripDiacritics(params.term).toUpperCase();
 
       // Check if the text contains the term
       if (original.indexOf(term) > -1) {
