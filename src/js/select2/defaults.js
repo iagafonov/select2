@@ -302,6 +302,7 @@ define([
       function match(a) {
         return DIACRITICS[a] || a;
       }
+
       return text.replace(/[^\u0000-\u007E]/g, match);
     }
 
@@ -338,8 +339,8 @@ define([
         return matcher(params, match);
       }
 
-      var original = data.text.toUpperCase() // stripDiacritics(data.text).toUpperCase();
-      var term = params.term.toUpperCase() // stripDiacritics(params.term).toUpperCase();
+      var original = data.text ? stripDiacritics(data.text).toUpperCase() : '';
+      var term = stripDiacritics(params.term).toUpperCase();
 
       // Check if the text contains the term
       if (original.indexOf(term) > -1) {
